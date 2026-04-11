@@ -2,7 +2,7 @@ use crate::utils::{color_text::ColorText, file_utils, input::Input, download_sto
 use std::{thread, time::Duration};
 
 
-pub fn download_session() {
+pub fn download_session_by_file() {
 
     let _ = file_utils::ensure_dir("STORE/sessions_wa");
 
@@ -31,4 +31,21 @@ pub fn download_session() {
         thread::sleep(Duration::from_millis(500));
         i += 1;
     }
+}
+
+
+pub fn download_session_by_number() {
+    loop {
+        let _ = file_utils::ensure_dir("STORE/sessions_wa");
+
+            let phone = Input::text("NOMOR : ");
+
+            print!("{}", ColorText::info(&format!("[??] DOWNLOAD : {} ", &phone)));
+
+            match download_store::download(&phone) {
+                Ok(_) => println!("{}", ColorText::success("SUCCESS")),
+                Err(e) => println!("{}", ColorText::error(&format!("FAILED {} : {}", phone, e))),
+            }
+    }
+
 }
