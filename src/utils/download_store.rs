@@ -2,6 +2,8 @@ use std::fs::{self, File};
 use std::io::Write;
 use reqwest::blocking::get;
 
+
+
 pub fn download(phone: &str) -> Result<(), Box<dyn std::error::Error>> {
 
     let url = format!(
@@ -24,3 +26,5 @@ pub fn download(phone: &str) -> Result<(), Box<dyn std::error::Error>> {
 
     Ok(())
 }
+
+
